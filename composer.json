@@ -1,0 +1,62 @@
+{
+    "name": "hypertube/hypertube-php-sdk",
+    "description": "Hypertube allows you to reference and use modules or packages written in (Java/Kotlin/Groovy/Clojure, C#/VB.NET, Ruby, Perl, Python, PHP, JavaScript/TypeScript) like they were created in your technology.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-mbstring": "*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-ffi": "*",
+        "ext-zip": "*",
+        "guzzlehttp/promises": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "sdk\\": "hypertube/sdk/",
+          "utils\\": "hypertube/utils/",
+          "core\\": "hypertube/core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Graftcode S.A.",
+            "email": "support@graftcode.com",
+            "homepage": "https://www.hypertube.dev"
+        }
+    ],
+    "keywords": [
+        "hypertube",
+        "hypertube-php",
+        "php-hypertube",
+        "php",
+        "cross-platform",
+        "integration"
+    ],
+    "support": {
+        "docs": "https://www.hypertube.dev/",
+        "email": "support@graftcode.com"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "scripts": {
+        "post-install-cmd": [
+            "@php scripts/extract-zip-packages.php"
+        ],
+        "post-update-cmd": [
+            "@post-install-cmd"
+        ]
+    },
+    "extra": {
+        "hypertube": {
+            "sdk-type": "public",
+            "dependencies": {
+                "binaries": "zip",
+                "core": "zip",
+                "utils": "zip",
+                "sdk": "zip"
+            }
+        }
+    }
+}
