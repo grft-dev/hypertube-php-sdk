@@ -78,7 +78,7 @@ function detectPackageVersion()
         $lockData = json_decode(file_get_contents($lockFilePath), true);
         if (isset($lockData['packages'])) {
             foreach ($lockData['packages'] as $package) {
-                if ($package['name'] === 'hypertube/hypertube-php-sdk') {
+                if ($package['name'] === 'graftcode/hypertube-php-sdk') {
                     return $package['version'];
                 }
             }
