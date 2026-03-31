@@ -8,7 +8,7 @@ $zipMap = [
     'hypertube-sdk.zip' => 'sdk',
     'hypertube-core.zip' => 'core',
     'hypertube-utils.zip' => 'utils',
-    'hypertube-Binaries.zip' => 'binaries'
+    'hypertube-binaries.zip' => 'binaries'
 ];
 
 if (!class_exists('ZipArchive')) {
