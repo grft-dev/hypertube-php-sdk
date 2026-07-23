@@ -14,9 +14,9 @@
     },
     "autoload": {
         "psr-4": {
-          "sdk\\": "hypertube/sdk/",
-          "utils\\": "hypertube/utils/",
-          "core\\": "hypertube/core/"
+            "HypertubePhpSdk\\": "hypertube/sdk/",
+            "HypertubePhpUtils\\": "hypertube/utils/",
+            "HypertubePhpCore\\": "hypertube/core/"
         }
     },
     "authors": [

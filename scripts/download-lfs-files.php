@@ -73,11 +73,15 @@ echo "\n";
 
 function detectPackageVersion()
 {
-    $lockFilePath = dirname(__DIR__,4) . '/composer.lock';
+    $lockFilePath = dirname(__DIR__, 4) . '/composer.lock';
     if (file_exists($lockFilePath)) {
         $lockData = json_decode(file_get_contents($lockFilePath), true);
-        if (isset($lockData['packages'])) {
-            foreach ($lockData['packages'] as $package) {
+        foreach (['packages', 'packages-dev'] as $section) {
+            if (!isset($lockData[$section])) {
+                continue;
+            }
+
+            foreach ($lockData[$section] as $package) {
                 if ($package['name'] === 'graftcode/hypertube-php-sdk') {
                     return $package['version'];
                 }
@@ -88,7 +92,7 @@ function detectPackageVersion()
     return false;
 }
 
-function detectLfsFiles($packagesDir, $version)
+function detectLfsFiles($packagesDir, $version): array
 {
     $lfsFiles = [];
     if (!is_dir($packagesDir)) {
@@ -113,7 +117,7 @@ function detectLfsFiles($packagesDir, $version)
     return $lfsFiles;
 }
 
-function isLfsPointerFile($filePath)
+function isLfsPointerFile($filePath): bool
 {
     if (!file_exists($filePath)) {
         return false;
@@ -130,7 +134,7 @@ function isLfsPointerFile($filePath)
         strpos($content, 'version https://git-lfs.github.com/spec/v1') !== false;
 }
 
-function buildGitHubLfsUrl($filename, $version)
+function buildGitHubLfsUrl($filename, $version): string
 {
     $baseUrl = 'https://github.com/grft-dev/hypertube-php-sdk/raw';
 
@@ -141,7 +145,7 @@ function buildGitHubLfsUrl($filename, $version)
     return "$baseUrl/$version/packages/$filename";
 }
 
-function downloadLfsFile($filePath, $url)
+function downloadLfsFile($filePath, $url): bool
 {
     echo "  📥 Downloading from: $url\n";
 
