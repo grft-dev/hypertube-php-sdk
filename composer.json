@@ -10,6 +10,7 @@
         "ext-json": "*",
         "ext-ffi": "*",
         "ext-zip": "*",
+        "symfony/http-client": "^5.4",
         "guzzlehttp/promises": "^2.0"
     },
     "autoload": {
