@@ -90,7 +90,7 @@ echo "📁 hypertube structure:\n";
 showHypertubeStructure($packageDir);
 
 echo "\n✅ Components are available through PSR-4 autoloader:\n";
-echo "   - use sdk\\ClassName;\n";
+echo "   - use HypertubePhpSdk\\ClassName;\n";
 
 function removeDirectory($dir) {
     if (!is_dir($dir)) {
